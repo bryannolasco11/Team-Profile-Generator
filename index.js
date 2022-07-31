@@ -12,7 +12,7 @@ const teamArray = [];
 
 //questions for the manager
 const managerQuestions = () => {
-    return inquirer
+    inquirer
         .prompt ([
         {
             type: 'input',
@@ -41,11 +41,12 @@ const managerQuestions = () => {
             const manager = new Manager (name, id, email, officeNumber);
 
             console.log(manager);
+            teamArray.push(manager);
         })
 };
 //questions for the engineer
 const engineerQuestions = () => {
-    return inquirer
+    inquirer
         .prompt ([
         {
             type: 'input',
@@ -73,7 +74,7 @@ const engineerQuestions = () => {
 };
 
 const internQuestions = () => {
-    return inquirer
+    inquirer
         .prompt ([
         {
             type: 'input',
@@ -98,6 +99,20 @@ const internQuestions = () => {
             message: 'What school does the intern attend?'
         }
     ])
+};
+
+const verifyAddToTeam = () => {
+    inquirer
+        .prompt ([
+            {
+               type: 'list',
+               name: 'role',
+               message: 'Would you like to add a member to your team?  Choose what type.  If not, choose "Done".'
+               choices: ['Engineer', 'Intern', 'Done']
+
+            }
+        ])
+        
 }
 
 

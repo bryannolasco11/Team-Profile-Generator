@@ -10,5 +10,5 @@ test('creates a manager object', () => {
 // get 'manager' from getRole()
 test("get's employee's role", () => {
     const manager = new Manager('Michael');
-    expect(manager.getRole()).toBe('Manager');
+    expect(manager.getRole()).toBe('Manager');  //should it be employee.getRole?
 });

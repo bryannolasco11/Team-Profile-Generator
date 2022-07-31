@@ -129,36 +129,18 @@ const verifyAddToTeam = () => {
             }
         ])
         .then((answer)=>{
-            console.log("answer.role");
+            console.log(answer.role);
             if (answer.role === 'Engineer') {
                 engineerQuestions();
             } else if (answer.role === 'Intern') {
                 internQuestions();
             } else {
-                console.log("A pager will be generated");
+                console.log("A page will be generated");
+                console.log(teamArray);
             }
         })
 }
 
 
-// const employeeQuestions = () => {
-//     console.log("A boss manager such as yourself should have some employees");
-    
-//     return inquirer
-//         .prompt (
-//             {
-//                 type: '',
-//                 name: 'role',
-//                 message: 'Would you like to add another employee.  If so, what type?',
-//                 choices: ['Engineer', 'Intern', 'none']
-//             }
-        
-//         )
-// }
-
-
-
 managerQuestions()
-    // .then((data=>{
-    //     console.log(data);
-    // }))
+    

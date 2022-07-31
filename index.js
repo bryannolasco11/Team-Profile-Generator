@@ -42,6 +42,7 @@ const managerQuestions = () => {
 
             console.log(manager);
             teamArray.push(manager);
+            verifyAddToTeam();
         })
 };
 //questions for the engineer
@@ -71,6 +72,14 @@ const engineerQuestions = () => {
             message: "What is engineer's Github name?"
         }
     ])
+    .then(engineerData => {
+        const { name, id, email, github } = engineerData;
+        const engineer = new Engineer (name, id, email, github);
+
+            console.log(engineer);
+            teamArray.push(engineer);
+            verifyAddToTeam();
+    })
 };
 
 const internQuestions = () => {
@@ -99,6 +108,14 @@ const internQuestions = () => {
             message: 'What school does the intern attend?'
         }
     ])
+    .then(internData => {
+        const { name, id, email, school } = internData;
+        const intern = new Intern (name, id, email, school);
+
+            console.log(intern);
+            teamArray.push(intern);
+            verifyAddToTeam();
+    })
 };
 
 const verifyAddToTeam = () => {
@@ -107,12 +124,20 @@ const verifyAddToTeam = () => {
             {
                type: 'list',
                name: 'role',
-               message: 'Would you like to add a member to your team?  Choose what type.  If not, choose "Done".'
+               message: 'Would you like to add a member to your team?  Choose what type.  If not, choose "Done".',
                choices: ['Engineer', 'Intern', 'Done']
-
             }
         ])
-        
+        .then((answer)=>{
+            console.log("answer.role");
+            if (answer.role === 'Engineer') {
+                engineerQuestions();
+            } else if (answer.role === 'Intern') {
+                internQuestions();
+            } else {
+                console.log("A pager will be generated");
+            }
+        })
 }
 
 

@@ -61,7 +61,8 @@ const employeeCards = employeeArr => {
 
     employeeHtml.push(employeeArr
         .filter(employee => employee.getRole() === 'Manager')
-        .map(manager => generateManager(manager)));
+        .map(manager => generateManager(manager))
+        .join(''));
 
     employeeHtml.push(employeeArr
         .filter(employee => employee.getRole() === 'Engineer')

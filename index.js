@@ -42,8 +42,8 @@ const managerQuestions = () => {
         }])
         .then(managerData => {
             
-            const { name, id, email, officeNumber } = managerData;
-            const manager = new Manager (name, id, email, officeNumber);
+            const { name, id, email, role, officeNumber } = managerData;
+            const manager = new Manager (name, id, email, role, officeNumber);
 
             console.log(manager);
             teamArray.push(manager);
@@ -78,8 +78,8 @@ const engineerQuestions = () => {
         }
     ])
     .then(engineerData => {
-        const { name, id, email, github } = engineerData;
-        const engineer = new Engineer (name, id, email, github);
+        const { name, id, email, role, github } = engineerData;
+        const engineer = new Engineer (name, id, email, role, github);
 
             console.log(engineer);
             teamArray.push(engineer);
@@ -114,8 +114,8 @@ const internQuestions = () => {
         }
     ])
     .then(internData => {
-        const { name, id, email, school } = internData;
-        const intern = new Intern (name, id, email, school);
+        const { name, id, email, role,  school } = internData;
+        const intern = new Intern (name, id, email, role, school);
 
             console.log(intern);
             teamArray.push(intern);
@@ -143,6 +143,7 @@ function verifyAddToTeam () {
                 console.log("A page will be generated");
                 console.log(teamArray);
                 return teamArray;
+
             }
         })
 }

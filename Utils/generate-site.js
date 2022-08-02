@@ -1,4 +1,5 @@
 const fs = require('fs');
+//const { builtinModules } = require('module');
 
 // writing files
 const writeFile = fileContent => {
@@ -16,3 +17,5 @@ const writeFile = fileContent => {
     });
   });
 };
+
+module.exports = {writeFile};

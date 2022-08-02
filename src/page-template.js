@@ -11,21 +11,46 @@
 
 // export that entire page? where does templateData go?
 
-const generateManager = managerText => {
+const generateManager = manager => {
     return `
     <div>
         <h3> 
-            ${Manager.name}
+            ${manager.getName()}
         </h3>
+        <h4>${manager.getRole()}</h4>
+        <p>Employee Id: ${manager.getId()}</p>
+        <p>Email: ${manager.getEmail()}</p>
+        <p>Office Number: ${manager.getOfficeNumber()}</p>
+    </div>
     `
 };
 
-const generateEngineer = engingeerText => {
-
+const generateEngineer = engineer => {
+    return `
+    <div>
+        <h3> 
+            ${engineer.getName()}
+        </h3>
+        <h4>${engineer.getRole()}</h4>
+        <p>Employee Id: ${engineer.getId()}</p>
+        <p>Email: ${engineer.getEmail()}</p>
+        <p>Github: ${engineer.getGithub()}</p>
+    </div>
+    `
 };
 
-const generateIntern = internText => {
-
+const generateIntern = intern => {
+    return `
+    <div>
+        <h3> 
+            ${intern.getName()}
+        </h3>
+        <h4>${intern.getRole()}</h4>
+        <p>Employee Id: ${intern.getId()}</p>
+        <p>Email: ${intern.getEmail()}</p>
+        <p>School: ${intern.getSchool()}</p>
+    </div>
+    `
 
 };
 
@@ -33,16 +58,31 @@ const generateIntern = internText => {
 // 2) Then it will join each card into a big array
 const employeeCards = employeeArr => {
     let employeeHtml = [];
+
+    employeeHtml.push(employeeArr
+        .filter(employee => employee.getRole() === 'Manager')
+        .map(manager => generateManager(manager)));
+
+    employeeHtml.push(employeeArr
+        .filter(employee => employee.getRole() === 'Engineer')
+        .map(engineer => generateEngineer(engineer))
+        .join(''));
+
+    employeeHtml.push(employeeArr
+        .filter(employee => employee.getRole() === 'Intern')
+        .map(intern => generateIntern(intern))
+        .join(''));
     // use filter to get out each
     // map each
     // join them
-
+    return employeeHtml.join('');
+    
 }
 
 
 
-module.exports = templateData => {
-    const { }= templateData;
+module.exports =templateData => {
+    
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -51,8 +91,8 @@ module.exports = templateData => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Team Profile Generator Demo</title>
-
-      <link rel="stylesheet" href="style.css">
+    </head>
+     
 
       <body>
             <header>
@@ -60,7 +100,7 @@ module.exports = templateData => {
             </header>
 
             <main>
-
+                ${employeeCards(templateData)}
             </main>
             <footer>
             </footer>

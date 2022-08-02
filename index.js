@@ -1,18 +1,22 @@
-const Employee = require('./lib/Employee.js');
+
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern.js');
 
 const inquirer = require("inquirer");
-const fs = require("fs");
+//const fs = require("fs");
+const generatePage = require('./src/page-template.js');
+const {writeFile} = require('./utils/generate-site.js');
 
 // empty array for different team members
 const teamArray = [];
 
 
+
+
 //questions for the manager
 const managerQuestions = () => {
-    inquirer
+    return inquirer
         .prompt ([
         {
             type: 'input',
@@ -37,6 +41,7 @@ const managerQuestions = () => {
             message: "What is the number on your office door?"
         }])
         .then(managerData => {
+            
             const { name, id, email, officeNumber } = managerData;
             const manager = new Manager (name, id, email, officeNumber);
 
@@ -118,7 +123,7 @@ const internQuestions = () => {
     })
 };
 
-const verifyAddToTeam = () => {
+function verifyAddToTeam () {
     inquirer
         .prompt ([
             {
@@ -137,10 +142,29 @@ const verifyAddToTeam = () => {
             } else {
                 console.log("A page will be generated");
                 console.log(teamArray);
+                return teamArray;
             }
         })
 }
 
-
 managerQuestions()
+    .then(response => {
+        return generatePage(teamArray);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+      });
+   
+    // .then((templateData) => {
+    //     fs.writeFile("index.html", generatePage(templateData), function(err){
+    //         if (err) {
+    //             console.log('error')
+    //         } else {
+    //             console("index.html created")
+    //         }
+    //     })
+    // })
     

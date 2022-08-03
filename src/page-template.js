@@ -13,7 +13,8 @@
 
 const generateManager = manager => {
     return `
-    <div class="card">
+    <div class="card m-3">
+    <div class="card-body">
         <div class="card-header bg-warning text-info">
         <h2 class="card-title">${manager.getName()}</h2>
         <h4 class="card-subtitle">${manager.getRole()}</h4>
@@ -22,27 +23,33 @@ const generateManager = manager => {
             <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
             <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
         </ul>
+        </div>
+    </div>
     </div>
     `
 };
 
 const generateEngineer = engineer => {
     return `
-    <div class="card">
+    <div class="card m-3">
+    <div class="card-body">
         <div class="card-header bg-primary text-dark">
-        <h2 class="card-title">${engineer.getName()}</h2>
+        <h2 class="card-title bg-primary text-dark">${engineer.getName()}</h2>
         <h4 class="card-subtitle">${engineer.getRole()}</h4>
         <ul class="list-group">
             <li class="list-group-item">Employee Id: ${engineer.getId()}</li>
             <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
             <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li>
+        </div>
+    </div>
     </div>
     `
 };
 
 const generateIntern = intern => {
     return `
-    <div class="card">
+    <div class="card m-3">
+    <div class="card-body">
         <div class="card-header bg-info text-dark">
         <h2 class="card-title">${intern.getName()}</h2>
         <h4 class="card-subtitle">${intern.getRole()}</h4>
@@ -50,6 +57,8 @@ const generateIntern = intern => {
             <li class="list-group-item">Employee Id: ${intern.getId()}</li>
             <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
             <li class="list-group-item">School: ${intern.getSchool()}</p>
+        </div>
+    </div>
     </div>
     `
 
@@ -107,14 +116,16 @@ module.exports =templateData => {
                     <h1 class="text-center text-warning">My Team</h1>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+        </div>
+            <main class="container">
+                <div class="row justify-content-center">
+                    <div class="card-deck">
                         ${employeeCards(templateData)}
                     </div>
                 </div>
-            </div>
-        </div>
+                
+            </main>
+        
             <footer>
             </footer>
         </body>

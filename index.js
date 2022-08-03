@@ -4,7 +4,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern.js');
 
 const inquirer = require("inquirer");
-//const fs = require("fs");
+const fs = require("fs");
 const generatePage = require('./src/page-template.js');
 const {writeFile} = require('./utils/generate-site.js');
 
@@ -140,24 +140,33 @@ function verifyAddToTeam () {
             } else if (answer.role === 'Intern') {
                 internQuestions();
             } else {
-                console.log("A page will be generated");
-                console.log(teamArray);
-                return teamArray;
+               return fs.writeFile("./dist/index.html", generatePage(teamArray), function(err){
+                   if(err){
+                       console.log("ERROR")
+                   } else {
+                       console.log("Index generated!")
+                   }
+               })
+                // console.log("A page will be generated");
+                // console.log(teamArray);
+                // return teamArray;
 
             }
         })
 }
 
 managerQuestions()
-    .then(response => {
-        return generatePage(teamArray);
-    })
-    .then(pageHTML => {
-        return writeFile(pageHTML);
-    })
-    .catch(err => {
-        console.log(err);
-      });
+   // .then(verifyAddToTeam)
+    // .then(response => {
+    //     return generatePage(teamArray);
+    // })
+    // .then(pageHTML => {
+    //     return writeFile(pageHTML);
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    //   });
+    
    
     // .then((templateData) => {
     //     fs.writeFile("index.html", generatePage(templateData), function(err){

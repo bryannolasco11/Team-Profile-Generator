@@ -91,15 +91,22 @@ module.exports =templateData => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        />
       <title>Team Profile Generator Demo</title>
     </head>
      
 
       <body>
-            <header>
-
-            </header>
-
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 jumbotron mb-3 team-heading bg-primary">
+                    <h1 class="text-center text-warning">My Team</h1>
+                </div>
+            </div>
+        </div>
             <main>
                 ${employeeCards(templateData)}
             </main>

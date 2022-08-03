@@ -13,42 +13,43 @@
 
 const generateManager = manager => {
     return `
-    <div>
-        <h3> 
-            ${manager.getName()}
-        </h3>
-        <h4>${manager.getRole()}</h4>
-        <p>Employee Id: ${manager.getId()}</p>
-        <p>Email: ${manager.getEmail()}</p>
-        <p>Office Number: ${manager.getOfficeNumber()}</p>
+    <div class="card">
+        <div class="card-header bg-warning text-info">
+        <h2 class="card-title">${manager.getName()}</h2>
+        <h4 class="card-subtitle">${manager.getRole()}</h4>
+        <ul class="list-group">
+            <li class="list-group-item">Employee Id: ${manager.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+            <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
+        </ul>
     </div>
     `
 };
 
 const generateEngineer = engineer => {
     return `
-    <div>
-        <h3> 
-            ${engineer.getName()}
-        </h3>
-        <h4>${engineer.getRole()}</h4>
-        <p>Employee Id: ${engineer.getId()}</p>
-        <p>Email: ${engineer.getEmail()}</p>
-        <p>Github: ${engineer.getGithub()}</p>
+    <div class="card">
+        <div class="card-header bg-primary text-dark">
+        <h2 class="card-title">${engineer.getName()}</h2>
+        <h4 class="card-subtitle">${engineer.getRole()}</h4>
+        <ul class="list-group">
+            <li class="list-group-item">Employee Id: ${engineer.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li>
     </div>
     `
 };
 
 const generateIntern = intern => {
     return `
-    <div>
-        <h3> 
-            ${intern.getName()}
-        </h3>
-        <h4>${intern.getRole()}</h4>
-        <p>Employee Id: ${intern.getId()}</p>
-        <p>Email: ${intern.getEmail()}</p>
-        <p>School: ${intern.getSchool()}</p>
+    <div class="card">
+        <div class="card-header bg-info text-dark">
+        <h2 class="card-title">${intern.getName()}</h2>
+        <h4 class="card-subtitle">${intern.getRole()}</h4>
+        <ul class="list-group">
+            <li class="list-group-item">Employee Id: ${intern.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+            <li class="list-group-item">School: ${intern.getSchool()}</p>
     </div>
     `
 
@@ -102,14 +103,18 @@ module.exports =templateData => {
       <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 jumbotron mb-3 team-heading bg-primary">
+                <div class="col-12 title mb-3 team-heading bg-primary">
                     <h1 class="text-center text-warning">My Team</h1>
                 </div>
             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        ${employeeCards(templateData)}
+                    </div>
+                </div>
+            </div>
         </div>
-            <main>
-                ${employeeCards(templateData)}
-            </main>
             <footer>
             </footer>
         </body>

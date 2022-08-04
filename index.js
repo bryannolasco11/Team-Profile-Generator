@@ -43,7 +43,7 @@ const managerQuestions = () => {
         .then(managerData => {
             
             const { name, id, email, role, officeNumber } = managerData;
-            const manager = new Manager (name, id, email, role, officeNumber);
+            const manager = new Manager (name, id, email, officeNumber);
 
             console.log(manager);
             teamArray.push(manager);
@@ -79,7 +79,7 @@ const engineerQuestions = () => {
     ])
     .then(engineerData => {
         const { name, id, email, role, github } = engineerData;
-        const engineer = new Engineer (name, id, email, role, github);
+        const engineer = new Engineer (name, id, email, github);
 
             console.log(engineer);
             teamArray.push(engineer);
@@ -115,7 +115,7 @@ const internQuestions = () => {
     ])
     .then(internData => {
         const { name, id, email, role,  school } = internData;
-        const intern = new Intern (name, id, email, role, school);
+        const intern = new Intern (name, id, email, school);
 
             console.log(intern);
             teamArray.push(intern);
@@ -147,34 +147,11 @@ function verifyAddToTeam () {
                        console.log("Index generated!")
                    }
                })
-                // console.log("A page will be generated");
-                // console.log(teamArray);
-                // return teamArray;
-
+               
             }
         })
 }
 
 managerQuestions()
-   // .then(verifyAddToTeam)
-    // .then(response => {
-    //     return generatePage(teamArray);
-    // })
-    // .then(pageHTML => {
-    //     return writeFile(pageHTML);
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    //   });
-    
    
-    // .then((templateData) => {
-    //     fs.writeFile("index.html", generatePage(templateData), function(err){
-    //         if (err) {
-    //             console.log('error')
-    //         } else {
-    //             console("index.html created")
-    //         }
-    //     })
-    // })
-    
+   

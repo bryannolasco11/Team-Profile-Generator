@@ -4,6 +4,7 @@ https://github.com/bryannolasco11/Team-Profile-Generator
 ## Table of Contents:
 * [usage](#usage)
 * [Credits](#credits)
+* [Installation](#installation)
 * [Contributing](#contributing)
 
 ## Usage
@@ -12,11 +13,23 @@ This is a Team Profile generator.  A manger is asked to first put in his name, e
 
 ![alt text](./images/Team%20Profile%20Generator.png)
 
+I have added two video links in case one does not work.
+
+[Walkthrough video link] (https://drive.google.com/file/d/1P81_KuLO2mLXcUloDjuQ53tTY3CDbbp9/view?usp=sharing)
+
+[Youtube Walkthrough link] (https://youtu.be/WATMs-sTvko)
+
 ## Credits
 https://github.com/bryannolasco11/
 
 Bryan created a program uses javascript, jest, and inquirer.  Also, Camille Howe was a study partner.
 
+## Installation
+To install inquirer:
+npm i inquirer@8.2.4
+
+To install jest:
+npm install jest --save-dev
 
 ## Contributing
 Contributor Covenant Code of Conduct

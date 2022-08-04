@@ -13,7 +13,7 @@
 
 const generateManager = manager => {
     return `
-    <div class="card m-3">
+    <div class="card">
     <div class="card-body">
         <div class="card-header bg-warning text-info">
         <h2 class="card-title">${manager.getName()}</h2>
@@ -31,7 +31,7 @@ const generateManager = manager => {
 
 const generateEngineer = engineer => {
     return `
-    <div class="card m-3">
+    <div class="card">
     <div class="card-body">
         <div class="card-header bg-primary text-dark">
         <h2 class="card-title bg-primary text-dark">${engineer.getName()}</h2>
@@ -48,7 +48,7 @@ const generateEngineer = engineer => {
 
 const generateIntern = intern => {
     return `
-    <div class="card m-3">
+    <div class="card">
     <div class="card-body">
         <div class="card-header bg-info text-dark">
         <h2 class="card-title">${intern.getName()}</h2>
@@ -119,7 +119,7 @@ module.exports =templateData => {
         </div>
             <main class="container">
                 <div class="row justify-content-center">
-                    <div class="card-deck">
+                    <div class="card-group">
                         ${employeeCards(templateData)}
                     </div>
                 </div>
